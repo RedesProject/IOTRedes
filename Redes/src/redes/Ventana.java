@@ -5,10 +5,13 @@
  */
 package redes;
 
+import com.sun.glass.events.KeyEvent;
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
@@ -20,20 +23,15 @@ public class Ventana extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana
-     *
-     * @param titulo
      */
     public Ventana(String titulo) {
         super(titulo);
         initComponents();
         ListaProductos.setModel(new DefaultListModel());
         ListaProductosCasa.setModel(new DefaultListModel());
-        inventario = new Inventario();
-        actualizarPrecio("Producto 1");
-        actualizarPrecio("Producto 2");
-        actualizarPrecio("Producto 3");
-        actualizarPrecio("Producto 4");
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +44,7 @@ public class Ventana extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jButton16 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -64,8 +63,10 @@ public class Ventana extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -83,13 +84,34 @@ public class Ventana extends javax.swing.JFrame {
         Comprar1 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        centroComercial = new javax.swing.JPanel();
+        panelCentro = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        cell = new javax.swing.JScrollPane();
+        cel = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
+        jButton12 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        compu = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel27 = new javax.swing.JPanel();
+        jPanel28 = new javax.swing.JPanel();
 
         jButton16.setText("jButton16");
+
+        jButton11.setText("jButton11");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,7 +189,6 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redes/carrito.gif"))); // NOI18N
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setMaximumSize(new java.awt.Dimension(401, 401));
         jLabel1.setMinimumSize(new java.awt.Dimension(401, 401));
@@ -223,11 +244,6 @@ public class Ventana extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new java.awt.GridBagLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redes/mapa.jpg"))); // NOI18N
-        jLabel2.setMaximumSize(new java.awt.Dimension(700, 500));
-        jLabel2.setMinimumSize(new java.awt.Dimension(700, 500));
-        jLabel2.setPreferredSize(new java.awt.Dimension(700, 500));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
@@ -258,12 +274,17 @@ public class Ventana extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        jButton2.setText("Ruta Corta");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
+        jButton1.setText("jButton1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_END;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 0, 0);
+        jPanel6.add(jButton1, gridBagConstraints);
+
+        jButton2.setText("jButton2");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -274,12 +295,7 @@ public class Ventana extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 0, 0);
         jPanel6.add(jButton2, gridBagConstraints);
 
-        jButton3.setText("Cargar Lista");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
+        jButton3.setText("jButton3");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -290,12 +306,18 @@ public class Ventana extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 0, 0);
         jPanel6.add(jButton3, gridBagConstraints);
 
-        jButton5.setText("Mostrar Ofertas");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
-            }
-        });
+        jButton4.setText("jButton4");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_END;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 0, 0);
+        jPanel6.add(jButton4, gridBagConstraints);
+
+        jButton5.setText("jButton5");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -387,9 +409,8 @@ public class Ventana extends javax.swing.JFrame {
         jPanel14.add(jPanel15, gridBagConstraints);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redes/Refrigeradora.gif"))); // NOI18N
-        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redes/Refrigeradora.jpg"))); // NOI18N
         jLabel3.setAlignmentY(0.0F);
         jLabel3.setMaximumSize(new java.awt.Dimension(401, 401));
         jLabel3.setMinimumSize(new java.awt.Dimension(401, 401));
@@ -469,12 +490,28 @@ public class Ventana extends javax.swing.JFrame {
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setLayout(new java.awt.GridBagLayout());
 
+        jButton6.setText("Agregar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_END;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 0, 0);
+        jPanel19.add(jButton6, gridBagConstraints);
+
+        jButton7.setText("Modificar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_END;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 0, 0);
+        jPanel19.add(jButton7, gridBagConstraints);
+
         jButton8.setText("Generar lista");
-        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -486,9 +523,9 @@ public class Ventana extends javax.swing.JFrame {
         jPanel19.add(jButton8, gridBagConstraints);
 
         jButton9.setText("Eliminar");
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -502,11 +539,6 @@ public class Ventana extends javax.swing.JFrame {
         jPanel19.add(jButton9, gridBagConstraints);
 
         jButton10.setText("Cambiar Supermercado");
-        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton10MouseClicked(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -529,33 +561,209 @@ public class Ventana extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1525, Short.MAX_VALUE)
+            .addGap(0, 728, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 811, Short.MAX_VALUE)
+            .addGap(0, 972, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Restaurante", jPanel3);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1525, Short.MAX_VALUE)
+        centroComercial.setBackground(new java.awt.Color(255, 255, 255));
+        centroComercial.setLayout(new java.awt.GridBagLayout());
+
+        panelCentro.setBackground(new java.awt.Color(255, 255, 255));
+        panelCentro.setToolTipText("");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setLayout(new java.awt.GridBagLayout());
+
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel22MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel22MouseExited(evt);
+            }
+        });
+        jPanel22.setLayout(new java.awt.GridBagLayout());
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\jimen\\Desktop\\240_F_142038101_luWTE3CbY6KrdZG8NNjBzZn7GXaloZ3Q.jpg")); // NOI18N
+        jLabel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel5MouseMoved(evt);
+            }
+        });
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        jPanel22.add(jLabel5, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanel11.add(jPanel22, gridBagConstraints);
+
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel23MouseEntered(evt);
+            }
+        });
+        jPanel23.setLayout(new java.awt.GridBagLayout());
+
+        cell.setBorder(null);
+        cell.setMaximumSize(new java.awt.Dimension(200, 200));
+        cell.setMinimumSize(new java.awt.Dimension(200, 200));
+        cell.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        cel.setColumns(20);
+        cel.setRows(5);
+        cel.setText("Cliente");
+        cel.setMaximumSize(new java.awt.Dimension(200, 200));
+        cel.setMinimumSize(new java.awt.Dimension(200, 200));
+        cel.setPreferredSize(new java.awt.Dimension(200, 200));
+        cell.setViewportView(cel);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        jPanel23.add(cell, gridBagConstraints);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\jimen\\Desktop\\idea_tablet01.jpeg")); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        jPanel23.add(jLabel6, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanel11.add(jPanel23, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanel4.add(jPanel11, gridBagConstraints);
+
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel20.setLayout(new java.awt.GridBagLayout());
+
+        jPanel21.setLayout(new java.awt.GridBagLayout());
+
+        jButton12.setText("Enviar");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        jPanel21.add(jButton12, gridBagConstraints);
+
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(400, 200));
+
+        compu.setEditable(false);
+        compu.setColumns(20);
+        compu.setRows(5);
+        compu.setText("Hola");
+        compu.setBorder(null);
+        compu.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        compu.setPreferredSize(new java.awt.Dimension(300, 190));
+        jScrollPane3.setViewportView(compu);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanel21.add(jScrollPane3, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 2;
+        jPanel20.add(jPanel21, gridBagConstraints);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\jimen\\Desktop\\tv-de-pantalla-plana_318-47346.jpg")); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 0.1;
+        jPanel20.add(jLabel4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        jPanel4.add(jPanel20, gridBagConstraints);
+
+        panelCentro.addTab("Promociones", jPanel4);
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 723, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 811, Short.MAX_VALUE)
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 944, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Centro Comercial", jPanel4);
+        panelCentro.addTab("tab2", jPanel27);
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 723, Short.MAX_VALUE)
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 944, Short.MAX_VALUE)
+        );
+
+        panelCentro.addTab("tab3", jPanel28);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        centroComercial.add(panelCentro, gridBagConstraints);
+        panelCentro.getAccessibleContext().setAccessibleName("Promociones");
+
+        jTabbedPane1.addTab("Centro Comercial", centroComercial);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,51 +778,26 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_Comprar1MouseClicked
 
     private void ProductoCasa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductoCasa2MouseClicked
-        Producto p = getProductoInventario("Producto 2");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 1);
+        addProducto(new Producto(2, "Producto 2", 1800), 1);
     }//GEN-LAST:event_ProductoCasa2MouseClicked
 
     private void ProductoCasa4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductoCasa4MouseClicked
-        Producto p = getProductoInventario("Producto 4");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 1);
+        addProducto(new Producto(4, "Producto 4", 5000), 1);
     }//GEN-LAST:event_ProductoCasa4MouseClicked
 
     private void ProductoCasa3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductoCasa3MouseClicked
-        Producto p = getProductoInventario("Producto 3");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 1);
+        addProducto(new Producto(3, "Producto 3", 9500), 1);
     }//GEN-LAST:event_ProductoCasa3MouseClicked
 
     private void ProductoCasa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductoCasa1MouseClicked
-        Producto p = getProductoInventario("Producto 1");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 1);
+        addProducto(new Producto(1, "Producto 1", 11200), 1);
     }//GEN-LAST:event_ProductoCasa1MouseClicked
 
     public JList<Producto> getLista(int tipo) {
-        return (tipo == 0) ? ListaProductos : ListaProductosCasa;
-    }
-
-    public void actualizarPrecio(String nombre) {
-        JButton[] botones = {Producto_1, Producto_2, Producto_3, Producto_4};
-        float precio;
-        String texto;
-        Producto p;
-        for (int i = 0; i < 4; i++) {
-            texto = botones[i].getText().substring(0, 10);
-            if (nombre.equals(texto)) {
-                p = getProductoInventario(texto);
-                if (p.getCantidadInventario() > 0) {
-                    precio = (float) (p.getPrecio() * 1.001);
-                    p.setPrecio(precio);
-                    botones[i].setText(texto + " - (" + precio + ")");
-                } else {
-                    botones[i].setText(texto + " - (AGOTADO)");
-                    p.setCantidadCarrito(p.getCantidadCarrito() - 1);
-                }
-            }
+        if (tipo == 0) {
+            return ListaProductos;
+        } else {
+            return ListaProductosCasa;
         }
     }
 
@@ -624,7 +807,7 @@ public class Ventana extends javax.swing.JFrame {
         DefaultListModel modelo = (DefaultListModel) getLista(tipo).getModel();
         if (modelo.size() != 0) {
             for (int i = 0; i < modelo.size(); i++) {
-                total += ((Producto) modelo.elementAt(i)).getPrecio() * ((Producto) modelo.elementAt(i)).getCantidadCarrito();
+                total += ((Producto) modelo.elementAt(i)).getPrecio() * ((Producto) modelo.elementAt(i)).getCantidad();
             }
 
             if (tipo == 0) {
@@ -659,113 +842,65 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprarMouseClicked
 
     private void Producto_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Producto_2MouseClicked
-        Producto p = getProductoInventario("Producto 2");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 0);
-        actualizarPrecio("Producto 2");
+        addProducto(new Producto(2, "Producto 2", 1800), 0);
     }//GEN-LAST:event_Producto_2MouseClicked
 
     private void Producto_4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Producto_4MouseClicked
-        Producto p = getProductoInventario("Producto 4");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 0);
-        actualizarPrecio("Producto 4");
+        addProducto(new Producto(4, "Producto 4", 5000), 0);
     }//GEN-LAST:event_Producto_4MouseClicked
 
     private void Producto_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Producto_3MouseClicked
-        Producto p = getProductoInventario("Producto 3");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 0);
-        actualizarPrecio("Producto 3");
+        addProducto(new Producto(3, "Producto 3", 9500), 0);
     }//GEN-LAST:event_Producto_3MouseClicked
 
     private void Producto_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Producto_1MouseClicked
-        Producto p = getProductoInventario("Producto 1");
-        p.setCantidadInventario(p.getCantidadInventario() - 1);
-        addProducto(p, 0);
-        actualizarPrecio("Producto 1");
+        addProducto(new Producto(1, "Producto 1", 11200), 0);
     }//GEN-LAST:event_Producto_1MouseClicked
 
-    public Producto getProductoInventario(String p) {
-        Producto tmp = inventario.buscar(p);
-        return (tmp != null) ? tmp : null;
-    }
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
 
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        Random aleatorio = new Random(System.currentTimeMillis());
+        // Producir nuevo int aleatorio entre 0 y 99
+        int i = aleatorio.nextInt(100);
+        compu.setText("Un cliente " + i + " se encuentra\n cerca, enviar promocion del día...");
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jLabel5MouseClicked
 
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
+    private void jLabel5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseMoved
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel5MouseMoved
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        if (ListaProductos.getModel().getSize() != 0) {
-            String iconfilename = getjLabel2().getIcon().toString();
-            String fileName = iconfilename.substring(iconfilename.lastIndexOf("/") + 1);
-            if ("mapa.jpg".equals(fileName)) {
-                getjLabel2().setIcon(new ImageIcon(getClass().getResource("/redes/mapa_1.jpg")));
-            } else {
-                getjLabel2().setIcon(new ImageIcon(getClass().getResource("/redes/mapa.jpg")));
-            }
-            this.repaint();
-        } else {
-            JOptionPane.showMessageDialog(this, "La lista de compras está vacia");
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+       cursor = TK.createCustomCursor(imagenCursor.getImage(), new Point(1,1), "cursor");
+        setCursor(cursor);
+        
+    }//GEN-LAST:event_jLabel5MouseEntered
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        ImageIcon icon = new ImageIcon(getClass().getResource("/redes/loading.gif"));
-        JOptionPane.showMessageDialog(
-                null,
-                "Cargando lista de supermercado desde su hogar",
-                "Por favor espere", JOptionPane.INFORMATION_MESSAGE,
-                icon);
-        for (int i = 0; i < 10; i++) {
-            addProducto(getProductoInventario("Producto " + ((int) (Math.random() * 4) + 1)), 0);
-        }
-    }//GEN-LAST:event_jButton3MouseClicked
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jLabel5MouseExited
 
-    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-        JOptionPane.showInputDialog(
-                this,
-                "Ingrese su nuevo supermercado de preferencia",
-                "Mercado de Preferencia",
-                JOptionPane.INFORMATION_MESSAGE);
+    private void jPanel22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel22MouseEntered
+        cursor = TK.createCustomCursor(imagenCursor.getImage(), new Point(1,1), "cursor");
+        setCursor(cursor);
+    }//GEN-LAST:event_jPanel22MouseEntered
 
-        JOptionPane.showMessageDialog(this, "Cambio realizado exitosamente", "Proceso completado",
-                JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton10MouseClicked
+    private void jPanel22MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel22MouseExited
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jPanel22MouseExited
 
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-        ImageIcon icon = new ImageIcon(getClass().getResource("/redes/loading.gif"));
-        JOptionPane.showMessageDialog(
-                null,
-                "Revisando contenido y generando lista",
-                "Por favor espere", JOptionPane.INFORMATION_MESSAGE,
-                icon);
-        for (int i = 0; i < 10; i++) {
-            addProducto(getProductoInventario("Producto " + ((int) (Math.random() * 4) + 1)), 1);
-        }
-    }//GEN-LAST:event_jButton8MouseClicked
+    private void jPanel23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel23MouseEntered
+        
+    }//GEN-LAST:event_jPanel23MouseEntered
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        ImageIcon icon = new ImageIcon(getClass().getResource("/redes/oferta.jpg"));
-        JOptionPane.showMessageDialog(
-                null,
-                "Producto " + ((int) (Math.random() * 4) + 1) + " con descuento del 25%",
-                "Ofertas del dia",
-                JOptionPane.INFORMATION_MESSAGE,
-                icon);
-    }//GEN-LAST:event_jButton5MouseClicked
-
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
-        DefaultListModel model = (DefaultListModel) getLista(1).getModel();
-        int selectedIndex = getLista(1).getSelectedIndex();
-        if (selectedIndex != -1) {
-            model.remove(selectedIndex);
-        }
-    }//GEN-LAST:event_jButton9MouseClicked
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        cel.setText("Tenemos promociones para usted\n venga a nuestro local para\n darle precios increibles.");
+    }//GEN-LAST:event_jButton12MouseClicked
 
     public void addProducto(Producto p, int lista) {
         boolean flag = false;
@@ -775,7 +910,7 @@ public class Ventana extends javax.swing.JFrame {
         } else {
             for (int i = 0; i < modelo.size(); i++) {
                 if (p.getId() == ((Producto) modelo.elementAt(i)).getId()) {
-                    p.setCantidadCarrito(((Producto) modelo.elementAt(i)).getCantidadCarrito() + 1);
+                    p.setCantidad(((Producto) modelo.elementAt(i)).getCantidad() + 1);
                     modelo.setElementAt(p, i);
                     flag = true;
                     break;
@@ -785,7 +920,9 @@ public class Ventana extends javax.swing.JFrame {
                 modelo.addElement(p);
             }
         }
+
         getLista(lista).setModel(modelo);
+
     }
 
     public void accionComprar(int n) {
@@ -811,7 +948,6 @@ public class Ventana extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    private Inventario inventario;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Comprar;
     private javax.swing.JButton Comprar1;
@@ -825,18 +961,32 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton Producto_2;
     private javax.swing.JButton Producto_3;
     private javax.swing.JButton Producto_4;
+    private javax.swing.JTextArea cel;
+    private javax.swing.JScrollPane cell;
+    private javax.swing.JPanel centroComercial;
+    private javax.swing.JTextArea compu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
@@ -846,6 +996,12 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -855,6 +1011,12 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane panelCentro;
     // End of variables declaration//GEN-END:variables
+    private Cursor cursor;
+    private final ImageIcon imagenCursor =  new ImageIcon(getClass().getResource("/image/cursor.png"));
+    private final Toolkit TK = Toolkit.getDefaultToolkit();
+    
 }
